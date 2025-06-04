@@ -16,7 +16,6 @@ async function checkData() {
     if (breeds.length === 0) {
       console.log('\n❌ No breeds found. Need to seed breeds first.');
     }
-
   } catch (error) {
     console.error('Error:', error.message);
   } finally {

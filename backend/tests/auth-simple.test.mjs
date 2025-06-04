@@ -78,7 +78,7 @@ describe('🔐 INTEGRATION: Authentication Controller Simple - Core Auth Workflo
     await prisma.trainingLog.deleteMany({
       where: {
         horse: {
-          owner: {
+          user: {
             email: {
               contains: 'test',
             },
@@ -90,7 +90,7 @@ describe('🔐 INTEGRATION: Authentication Controller Simple - Core Auth Workflo
     // 2. Delete horses
     await prisma.horse.deleteMany({
       where: {
-        owner: {
+        user: {
           email: {
             contains: 'test',
           },
@@ -114,7 +114,7 @@ describe('🔐 INTEGRATION: Authentication Controller Simple - Core Auth Workflo
     await prisma.trainingLog.deleteMany({
       where: {
         horse: {
-          owner: {
+          user: {
             email: {
               contains: 'test',
             },
@@ -126,7 +126,7 @@ describe('🔐 INTEGRATION: Authentication Controller Simple - Core Auth Workflo
     // 2. Delete horses
     await prisma.horse.deleteMany({
       where: {
-        owner: {
+        user: {
           email: {
             contains: 'test',
           },
@@ -156,7 +156,7 @@ describe('🔐 INTEGRATION: Authentication Controller Simple - Core Auth Workflo
 
     const response = await request(app).post('/register').send(userData).expect(201);
 
-    expect(response.body.success).toBe(true); // Changed from response.body.status
+    expect(response.body.status).toBe('success');
     expect(response.body.data.user.email).toBe(userData.email);
     expect(response.body.data.token).toBeDefined();
   }, 10000);
@@ -181,7 +181,7 @@ describe('🔐 INTEGRATION: Authentication Controller Simple - Core Auth Workflo
 
     const response = await request(app).post('/login').send(loginData).expect(200);
 
-    expect(response.body.success).toBe(true); // Changed from response.body.status
+    expect(response.body.status).toBe('success');
     expect(response.body.data.user.email).toBe(loginData.email);
     expect(response.body.data.token).toBeDefined();
   }, 10000);

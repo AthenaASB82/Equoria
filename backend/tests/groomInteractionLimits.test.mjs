@@ -146,7 +146,9 @@ describe('🐴 TDD: Groom Interaction Daily Limits - ALL Horses', () => {
       mockPrisma.horse.findUnique.mockResolvedValue(null);
 
       // ACT & ASSERT: Should throw error
-      await expect(validateFoalInteractionLimits(999)).rejects.toThrow('Foal with ID 999 not found');
+      await expect(validateFoalInteractionLimits(999)).rejects.toThrow(
+        'Foal with ID 999 not found',
+      );
     });
 
     it('should allow interaction when no previous interactions today', async () => {

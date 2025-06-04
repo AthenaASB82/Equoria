@@ -131,8 +131,8 @@ describe('Foal Task Log Storage', () => {
       // Update with new counts
       const updatedTaskLog = {
         desensitization: 3, // Incremented
-        early_touch: 1,     // Unchanged
-        trust_building: 1,   // New task
+        early_touch: 1, // Unchanged
+        trust_building: 1, // New task
       };
 
       await prisma.horse.update({

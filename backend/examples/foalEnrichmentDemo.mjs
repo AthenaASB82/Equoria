@@ -135,7 +135,7 @@ async function checkServer() {
       return false;
     }
   } catch (error) {
-    console.log('❌ Cannot connect to server. Make sure it\'s running on port 3000');
+    console.log("❌ Cannot connect to server. Make sure it's running on port 3000");
     console.log('   Start the server with: npm run dev');
     return false;
   }

@@ -245,6 +245,8 @@ describe('🏆 UNIT: Leaderboard Controller - Ranking & Statistics APIs', () => 
           xp: true,
           money: true,
         },
+      });
+
       expect(mockPrisma.user.findMany).toHaveBeenCalledWith({
         take: 10, // Default limit
         skip: 0, // Default offset (invalid -5 becomes 0)

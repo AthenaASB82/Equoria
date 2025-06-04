@@ -17,7 +17,6 @@ async function cleanupAssignments() {
     console.log(`✅ Deleted ${deletedInteractions.count} interactions`);
 
     console.log('🎯 Ready for fresh testing!');
-
   } catch (error) {
     console.error('❌ Error:', error.message);
   } finally {

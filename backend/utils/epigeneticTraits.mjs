@@ -240,15 +240,15 @@ function calculateInheritanceProbability(trait, bondScore, stressLevel) {
 
   // Adjust for trait rarity
   switch (traitDef.rarity) {
-  case 'common':
-    baseProbability = 0.5;
-    break;
-  case 'rare':
-    baseProbability = 0.15;
-    break;
-  case 'legendary':
-    baseProbability = 0.05;
-    break;
+    case 'common':
+      baseProbability = 0.5;
+      break;
+    case 'rare':
+      baseProbability = 0.15;
+      break;
+    case 'legendary':
+      baseProbability = 0.05;
+      break;
   }
 
   // Environmental modifiers

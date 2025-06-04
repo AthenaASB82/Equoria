@@ -72,9 +72,7 @@ describe('🏆 UNIT: Horse Eligibility - Competition Entry Validation', () => {
     });
 
     it('should throw error for undefined show', () => {
-      expect(() => isHorseEligibleForShow(validHorse)).toThrow(
-        'Show object is required',
-      );
+      expect(() => isHorseEligibleForShow(validHorse)).toThrow('Show object is required');
     });
 
     it('should throw error for non-array previousEntries', () => {

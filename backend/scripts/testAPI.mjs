@@ -29,8 +29,14 @@ async function testAPI() {
   console.log('🧪 Testing API and creating test data...\n');
 
   // Create breeds
-  await createBreed('Thoroughbred', 'A hot-blooded horse breed best known for its use in horse racing.');
-  await createBreed('Arabian', 'One of the oldest horse breeds, known for endurance and intelligence.');
+  await createBreed(
+    'Thoroughbred',
+    'A hot-blooded horse breed best known for its use in horse racing.',
+  );
+  await createBreed(
+    'Arabian',
+    'One of the oldest horse breeds, known for endurance and intelligence.',
+  );
   await createBreed('Quarter Horse', 'An American breed known for speed in quarter-mile races.');
   await createBreed('Akhal-Teke', 'A rare breed from Turkmenistan known for its metallic coat.');
 

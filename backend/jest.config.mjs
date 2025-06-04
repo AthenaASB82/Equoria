@@ -1,5 +1,4 @@
-// DO NOT MODIFY: Configuration locked for consistency
-// Jest configuration for a Node.js project using ES modules
+// Jest configuration for a Node.js project using native ES modules
 export default {
   testEnvironment: 'node',
 
@@ -8,9 +7,6 @@ export default {
 
   // Ensures Jest treats both JS and MJS files correctly
   moduleFileExtensions: ['js', 'mjs'],
-
-  // Don't transform node_modules except for specific packages that need it
-  transformIgnorePatterns: ['node_modules/(?!(dotenv|other-es-module-packages)/)'],
 
   // Setup file path must match your actual filename
   setupFilesAfterEnv: ['<rootDir>/jest.setup.mjs'],

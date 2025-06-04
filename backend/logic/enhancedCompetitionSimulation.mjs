@@ -159,10 +159,10 @@ export async function executeEnhancedCompetition(show, entries) {
           prizeWon,
           statGains: statGain
             ? {
-              stat: statGain.stat,
-              amount: statGain.amount,
-              awarded: true,
-            }
+                stat: statGain.stat,
+                amount: statGain.amount,
+                awarded: true,
+              }
             : null,
         },
       });
@@ -217,9 +217,9 @@ export async function executeEnhancedCompetition(show, entries) {
         xpGained,
         statGain: statGain
           ? {
-            stat: statGain.stat,
-            amount: statGain.amount,
-          }
+              stat: statGain.stat,
+              amount: statGain.amount,
+            }
           : null,
       });
     }

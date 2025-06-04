@@ -181,36 +181,36 @@ function testBreedingScenarios() {
 function evaluateConditions(traitConditions, actualConditions) {
   for (const [condition, requirement] of Object.entries(traitConditions)) {
     switch (condition) {
-    case 'mareStressMax':
-      if (actualConditions.mareStress > requirement) {
-        return false;
-      }
-      break;
-    case 'mareStressMin':
-      if (actualConditions.mareStress < requirement) {
-        return false;
-      }
-      break;
-    case 'feedQualityMin':
-      if (actualConditions.feedQuality < requirement) {
-        return false;
-      }
-      break;
-    case 'feedQualityMax':
-      if (actualConditions.feedQuality > requirement) {
-        return false;
-      }
-      break;
-    case 'inbreedingDetected':
-      if (actualConditions.inbreedingDetected !== requirement) {
-        return false;
-      }
-      break;
-    case 'noInbreeding':
-      if (actualConditions.inbreedingDetected === requirement) {
-        return false;
-      }
-      break;
+      case 'mareStressMax':
+        if (actualConditions.mareStress > requirement) {
+          return false;
+        }
+        break;
+      case 'mareStressMin':
+        if (actualConditions.mareStress < requirement) {
+          return false;
+        }
+        break;
+      case 'feedQualityMin':
+        if (actualConditions.feedQuality < requirement) {
+          return false;
+        }
+        break;
+      case 'feedQualityMax':
+        if (actualConditions.feedQuality > requirement) {
+          return false;
+        }
+        break;
+      case 'inbreedingDetected':
+        if (actualConditions.inbreedingDetected !== requirement) {
+          return false;
+        }
+        break;
+      case 'noInbreeding':
+        if (actualConditions.inbreedingDetected === requirement) {
+          return false;
+        }
+        break;
     }
   }
   return true;

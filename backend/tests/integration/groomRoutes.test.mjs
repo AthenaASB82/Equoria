@@ -43,7 +43,7 @@ describe('Groom Routes Integration Tests', () => {
     expect(60).toBeLessThanOrEqual(maxDuration);
   });
 
-  it('should validate hourly rate ranges', () => {
+  it('should validate session rate ranges', () => {
     const minRate = 5;
     const maxRate = 100;
     const testRate = 18.0;

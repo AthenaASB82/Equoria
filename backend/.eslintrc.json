@@ -4,17 +4,16 @@
     "es2022": true,
     "jest": true
   },
-"parserOptions": {
-  "ecmaVersion": "latest",
-  "sourceType": "module"
-},
-"plugins": ["only-warn",
-"import"],
-"extends": [
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["only-warn", "import", "prettier"],
+  "extends": [
     "eslint:recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
-"rules": {
+  "rules": {
     "no-var": "error",
     "no-extra-semi": "error",
     "prefer-const": "error",
@@ -23,25 +22,26 @@
     "quotes": ["error", "single"],
     "import/no-commonjs": "error",
     "indent": ["error", 2],
-    "rules": {
-  "camelcase": ["error", { "properties": "always" }],
-  "id-match": ["error", "^[a-zA-Z][a-zA-Z0-9]*$", {
-    "properties": true,
-    "onlyDeclarations": true,
-    "ignoreDestructuring": false
-  }]
-},
-"no-restricted-syntax": [
-    "error",
-    {
-      "selector": "CallExpression[callee.name='require']",
-      "message": "Use import instead of require"
-    },
-    {
-      "selector": "MemberExpression[object.name='module'][property.name='exports']",
-      "message": "Use export instead of module.exports"
-    }
-  ],
+    "camelcase": ["error", {
+      "properties": "always",
+      "allow": ["skill_level", "session_rate", "user_id", "foal_id", "groom_id"]
+    }],
+    "id-match": ["error", "^[a-zA-Z_][a-zA-Z0-9_]*$", {
+      "properties": false,
+      "onlyDeclarations": true,
+      "ignoreDestructuring": false
+    }],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "CallExpression[callee.name='require']",
+        "message": "Use import instead of require"
+      },
+      {
+        "selector": "MemberExpression[object.name='module'][property.name='exports']",
+        "message": "Use export instead of module.exports"
+      }
+    ],
     "comma-dangle": ["error", "always-multiline"],
     "object-curly-spacing": ["error", "always"],
     "arrow-parens": ["error", "as-needed"],
@@ -57,7 +57,7 @@
   },
   "overrides": [
     {
-      "files": ["**/*.test.js", "**/*.spec.js", "tests/**/*.js"],
+      "files": ["**/*.test.js", "**/*.spec.js", "**/*.test.mjs", "**/*.spec.mjs", "tests/**/*.js", "tests/**/*.mjs"],
       "env": {
         "jest": true
       },

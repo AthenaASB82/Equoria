@@ -126,7 +126,7 @@ const TRAIT_COMPETITION_EFFECTS = {
     },
     disciplines: {
       'Cross Country': { scoreModifier: 0.05, description: 'Performs consistently in all weather' },
-      Endurance: { scoreModifier: 0.04, description: 'Weather conditions don\'t affect stamina' },
+      Endurance: { scoreModifier: 0.04, description: "Weather conditions don't affect stamina" },
       Trail: { scoreModifier: 0.03, description: 'Reliable in outdoor conditions' },
     },
   },

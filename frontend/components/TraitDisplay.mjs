@@ -214,7 +214,7 @@ const TraitDisplay = ({ traits = {}, horseName = 'Horse', onTraitPress }) => {
   };
 
   // Modal component
-const TraitModalHeader = ({ selectedTrait, closeModal }) => (
+  const TraitModalHeader = ({ selectedTrait, closeModal }) => (
     <View className="flex-row items-center justify-between mb-4">
       <View className="flex-row items-center">
         <View
@@ -239,9 +239,7 @@ const TraitModalHeader = ({ selectedTrait, closeModal }) => (
 
   const TraitModalContent = ({ selectedTrait }) => (
     <ScrollView className="max-h-64">
-      <Text className="text-gray-800 text-base leading-6 mb-4">
-        {selectedTrait.description}
-      </Text>
+      <Text className="text-gray-800 text-base leading-6 mb-4">{selectedTrait.description}</Text>
       <View className="bg-gray-50 rounded-lg p-3">
         <Text className="text-sm font-semibold text-gray-700 mb-1">Effects:</Text>
         <Text className="text-sm text-gray-600">{selectedTrait.effects}</Text>
@@ -324,14 +322,10 @@ const TraitModalHeader = ({ selectedTrait, closeModal }) => (
             >
               <Text className="text-white text-center font-medium">Got it!</Text>
             </TouchableOpacity>
-            <TraitModalHeader selectedTrait={selectedTrait} closeModal={closeModal} />
-            <TraitModalContent selectedTrait={selectedTrait} />
-            <TraitModalFooter closeModal={closeModal} />
           </Pressable>
         </Pressable>
       </Modal>
     );
-  };);
   };
 
   const { positive = [], negative = [], hidden = [] } = traits;

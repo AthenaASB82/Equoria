@@ -630,7 +630,7 @@ describe('👩‍🔧 UNIT: Groom System - Foal Care Assignment & Management', (
         skillLevel: 'invalid_level',
         personality: 'invalid_personality',
         experience: 5,
-        hourlyRate: 18.0,
+        sessionRate: 18.0,
       };
 
       const effects = calculateGroomInteractionEffects(

@@ -569,13 +569,7 @@ export function calculateGroomInteractionEffects(groom, foal, interactionType, d
     stressChange = Math.max(-10, Math.min(5, stressChange));
 
     // Calculate cost per session based on groom's skill level
-    // Check for both sessionRate and hourlyRate for backward compatibility with tests
-    const baseRate =
-      typeof groom.sessionRate === 'number'
-        ? groom.sessionRate
-        : typeof groom.hourlyRate === 'number'
-          ? groom.hourlyRate
-          : 18.0;
+    const baseRate = typeof groom.sessionRate === 'number' ? groom.sessionRate : 18.0;
 
     // Primary factor is skill level as per game design
     // Small duration factor added only for test compatibility

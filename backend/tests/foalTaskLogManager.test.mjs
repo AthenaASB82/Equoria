@@ -320,7 +320,11 @@ describe('Foal Task Log Manager', () => {
 
       expect(summary.totalTaskCompletions).toBe(10);
       expect(summary.uniqueTasksCompleted).toBe(3);
-      expect(summary.completedTaskTypes).toEqual(['trust_building', 'desensitization', 'early_touch']);
+      expect(summary.completedTaskTypes).toEqual([
+        'trust_building',
+        'desensitization',
+        'early_touch',
+      ]);
       expect(summary.consecutiveDaysOfCare).toBe(8);
       expect(summary.hasBurnoutImmunity).toBe(true);
       expect(summary.lastCareDate).toEqual(foalData.lastGroomed);

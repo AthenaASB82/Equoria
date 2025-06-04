@@ -1,6 +1,6 @@
 /**
  * Schema Validator Utility
- * 
+ *
  * This utility validates that the database schema is compatible with the application's expectations.
  * It checks for the existence of required tables and fields, and logs warnings or throws errors
  * if the schema is incompatible.
@@ -24,7 +24,15 @@ const requiredSchemaElements = [
   },
   {
     model: 'Foal',
-    fields: ['id', 'name', 'age', 'userId', 'consecutiveDaysFoalCare', 'dailyTaskRecord', 'epigeneticModifiers'],
+    fields: [
+      'id',
+      'name',
+      'age',
+      'userId',
+      'consecutiveDaysFoalCare',
+      'dailyTaskRecord',
+      'epigeneticModifiers',
+    ],
   },
 ];
 
@@ -37,13 +45,13 @@ const requiredSchemaElements = [
 export async function validateDatabaseSchema({ throwOnError = false } = {}) {
   try {
     logger.info('Validating database schema...');
-    
+
     // Check database connection
     await prisma.$connect();
     logger.info('Database connection successful');
-    
+
     const validationErrors = [];
-    
+
     // Check each required model and its fields
     for (const { model, fields } of requiredSchemaElements) {
       try {
@@ -54,12 +62,13 @@ export async function validateDatabaseSchema({ throwOnError = false } = {}) {
           select: fields.reduce((acc, field) => ({ ...acc, [field]: true }), {}),
           take: 0,
         });
-        
+
         logger.info(`✓ Model ${model} with required fields exists`);
       } catch (error) {
         // Check if the error is related to missing fields
-        if (error.message.includes('Unknown field') || error.message.includes('doesn\'t exist')) {
-          const missingField = error.message.match(/Unknown field [`']([^'`]+)[`']/)?.[1] || 'unknown';
+        if (error.message.includes('Unknown field') || error.message.includes("doesn't exist")) {
+          const missingField =
+            error.message.match(/Unknown field [`']([^'`]+)[`']/)?.[1] || 'unknown';
           validationErrors.push(`Model ${model} is missing required field: ${missingField}`);
         } else if (error.message.includes('does not exist in the current database')) {
           validationErrors.push(`Model ${model} does not exist in the database`);
@@ -68,7 +77,7 @@ export async function validateDatabaseSchema({ throwOnError = false } = {}) {
         }
       }
     }
-    
+
     // Special check for the fields mentioned in the TODO
     try {
       await prisma.foal.findFirst({
@@ -82,34 +91,35 @@ export async function validateDatabaseSchema({ throwOnError = false } = {}) {
       logger.info('✓ Foal model has all required special fields');
     } catch (error) {
       if (error.message.includes('Unknown field')) {
-        const missingField = error.message.match(/Unknown field [`']([^'`]+)[`']/)?.[1] || 'unknown';
+        const missingField =
+          error.message.match(/Unknown field [`']([^'`]+)[`']/)?.[1] || 'unknown';
         validationErrors.push(`Foal model is missing special field: ${missingField}`);
       } else {
         validationErrors.push(`Error validating Foal special fields: ${error.message}`);
       }
     }
-    
+
     // Log validation results
     if (validationErrors.length > 0) {
       logger.error('Database schema validation failed with the following errors:');
       validationErrors.forEach(error => logger.error(`- ${error}`));
-      
+
       if (throwOnError) {
         throw new Error(`Database schema validation failed: ${validationErrors.join('; ')}`);
       }
-      
+
       return false;
     }
-    
+
     logger.info('Database schema validation successful');
     return true;
   } catch (error) {
     logger.error('Error during database schema validation:', error);
-    
+
     if (throwOnError) {
       throw error;
     }
-    
+
     return false;
   } finally {
     await prisma.$disconnect();
@@ -124,7 +134,7 @@ export async function validateDatabaseSchema({ throwOnError = false } = {}) {
 export async function validateDatabaseSchemaOrExit() {
   try {
     const isValid = await validateDatabaseSchema({ throwOnError: false });
-    
+
     if (!isValid) {
       logger.error('Exiting due to database schema validation failure');
       process.exit(1);

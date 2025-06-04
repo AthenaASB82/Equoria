@@ -78,18 +78,18 @@ describe('Task-Trait Influence Integration', () => {
     it('should calculate trait points for early foal development (0-1 years)', () => {
       // Simulate early enrichment-focused development
       const taskCompletions = {
-        trust_building: 5,    // 5 days of trust building
-        desensitization: 3,   // 3 days of desensitization
-        early_touch: 2,        // 2 days of early touch (overlap period)
+        trust_building: 5, // 5 days of trust building
+        desensitization: 3, // 3 days of desensitization
+        early_touch: 2, // 2 days of early touch (overlap period)
       };
 
       const traitPoints = calculateTraitPoints(taskCompletions);
 
       // Verify foundational trait development
-      expect(traitPoints.bonded).toBe(25);      // trust_building: 5 * 5
-      expect(traitPoints.resilient).toBe(25);   // trust_building: 5 * 5
-      expect(traitPoints.confident).toBe(15);   // desensitization: 3 * 5
-      expect(traitPoints.calm).toBe(10);        // early_touch: 2 * 5
+      expect(traitPoints.bonded).toBe(25); // trust_building: 5 * 5
+      expect(traitPoints.resilient).toBe(25); // trust_building: 5 * 5
+      expect(traitPoints.confident).toBe(15); // desensitization: 3 * 5
+      expect(traitPoints.calm).toBe(10); // early_touch: 2 * 5
     });
 
     it('should calculate trait points for middle development (1-2 years)', () => {
@@ -104,12 +104,12 @@ describe('Task-Trait Influence Integration', () => {
       const traitPoints = calculateTraitPoints(taskCompletions);
 
       // Verify balanced development
-      expect(traitPoints.bonded).toBe(15);          // trust_building: 3 * 5
-      expect(traitPoints.resilient).toBe(15);       // trust_building: 3 * 5
-      expect(traitPoints.confident).toBe(10);       // showground_exposure: 2 * 5
-      expect(traitPoints.crowd_ready).toBe(10);     // showground_exposure: 2 * 5
-      expect(traitPoints.calm).toBe(20);            // early_touch: 4 * 5
-      expect(traitPoints.show_calm).toBe(10);       // hoof_handling: 2 * 5
+      expect(traitPoints.bonded).toBe(15); // trust_building: 3 * 5
+      expect(traitPoints.resilient).toBe(15); // trust_building: 3 * 5
+      expect(traitPoints.confident).toBe(10); // showground_exposure: 2 * 5
+      expect(traitPoints.crowd_ready).toBe(10); // showground_exposure: 2 * 5
+      expect(traitPoints.calm).toBe(20); // early_touch: 4 * 5
+      expect(traitPoints.show_calm).toBe(10); // hoof_handling: 2 * 5
     });
 
     it('should calculate trait points for advanced development (2-3 years)', () => {
@@ -125,7 +125,7 @@ describe('Task-Trait Influence Integration', () => {
       const traitPoints = calculateTraitPoints(taskCompletions);
 
       // Verify presentation-focused development
-      expect(traitPoints.show_calm).toBe(45);           // hoof_handling(4) + tying_practice(3) + sponge_bath(2) = 9 * 5
+      expect(traitPoints.show_calm).toBe(45); // hoof_handling(4) + tying_practice(3) + sponge_bath(2) = 9 * 5
       expect(traitPoints.presentation_boosted).toBe(35); // sponge_bath(2) + coat_check(3) + mane_tail_grooming(2) = 7 * 5
     });
   });
@@ -153,12 +153,12 @@ describe('Task-Trait Influence Integration', () => {
       const traitPoints = calculateTraitPoints(fullDevelopmentTasks);
 
       // Verify comprehensive trait development
-      expect(traitPoints.bonded).toBe(40);              // trust_building: 8 * 5
-      expect(traitPoints.resilient).toBe(40);           // trust_building: 8 * 5
-      expect(traitPoints.confident).toBe(50);           // desensitization(6) + showground_exposure(4) = 10 * 5
-      expect(traitPoints.crowd_ready).toBe(20);         // showground_exposure: 4 * 5
-      expect(traitPoints.calm).toBe(30);                // early_touch: 6 * 5
-      expect(traitPoints.show_calm).toBe(60);           // hoof_handling(3) + tying_practice(5) + sponge_bath(4) = 12 * 5
+      expect(traitPoints.bonded).toBe(40); // trust_building: 8 * 5
+      expect(traitPoints.resilient).toBe(40); // trust_building: 8 * 5
+      expect(traitPoints.confident).toBe(50); // desensitization(6) + showground_exposure(4) = 10 * 5
+      expect(traitPoints.crowd_ready).toBe(20); // showground_exposure: 4 * 5
+      expect(traitPoints.calm).toBe(30); // early_touch: 6 * 5
+      expect(traitPoints.show_calm).toBe(60); // hoof_handling(3) + tying_practice(5) + sponge_bath(4) = 12 * 5
       expect(traitPoints.presentation_boosted).toBe(65); // sponge_bath(4) + coat_check(6) + mane_tail_grooming(3) = 13 * 5
 
       // Verify balanced development across all trait categories
@@ -230,7 +230,9 @@ describe('Task-Trait Influence Integration', () => {
 
   describe('Business Rule Validation', () => {
     it('should enforce consistent daily values across all tasks', () => {
-      const dailyValues = Object.values(TASK_TRAIT_INFLUENCE_MAP).map(influence => influence.dailyValue);
+      const dailyValues = Object.values(TASK_TRAIT_INFLUENCE_MAP).map(
+        influence => influence.dailyValue,
+      );
       const uniqueValues = [...new Set(dailyValues)];
 
       expect(uniqueValues).toHaveLength(1);
@@ -262,7 +264,7 @@ describe('Task-Trait Influence Integration', () => {
       // No trait should be overly dominant or neglected
       Object.values(traitTaskCounts).forEach(count => {
         expect(count).toBeGreaterThanOrEqual(1); // At least one task per trait
-        expect(count).toBeLessThanOrEqual(4);    // No more than 4 tasks per trait
+        expect(count).toBeLessThanOrEqual(4); // No more than 4 tasks per trait
       });
     });
   });
@@ -270,8 +272,8 @@ describe('Task-Trait Influence Integration', () => {
   describe('Development Stage Integration', () => {
     it('should align with foal development stages', () => {
       // Enrichment tasks (0-2 years) should focus on foundational traits
-      const enrichmentInfluences = ELIGIBLE_FOAL_ENRICHMENT_TASKS.map(task =>
-        TASK_TRAIT_INFLUENCE_MAP[task].traits,
+      const enrichmentInfluences = ELIGIBLE_FOAL_ENRICHMENT_TASKS.map(
+        task => TASK_TRAIT_INFLUENCE_MAP[task].traits,
       ).flat();
 
       expect(enrichmentInfluences).toContain('confident');
@@ -280,8 +282,8 @@ describe('Task-Trait Influence Integration', () => {
       expect(enrichmentInfluences).toContain('crowd_ready');
 
       // Grooming tasks (1-3 years) should focus on handling and presentation
-      const groomingInfluences = FOAL_GROOMING_TASKS.map(task =>
-        TASK_TRAIT_INFLUENCE_MAP[task].traits,
+      const groomingInfluences = FOAL_GROOMING_TASKS.map(
+        task => TASK_TRAIT_INFLUENCE_MAP[task].traits,
       ).flat();
 
       expect(groomingInfluences).toContain('calm');

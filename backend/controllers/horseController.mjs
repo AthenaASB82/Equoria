@@ -296,23 +296,23 @@ function assessFeedQualityFromMare(mare) {
 
     // Assess based on health status
     switch (mare.health_status) {
-    case 'Excellent':
-      feedQuality = 90;
-      break;
-    case 'Good':
-      feedQuality = 75;
-      break;
-    case 'Fair':
-      feedQuality = 55;
-      break;
-    case 'Poor':
-      feedQuality = 30;
-      break;
-    case 'Critical':
-      feedQuality = 15;
-      break;
-    default:
-      feedQuality = 50;
+      case 'Excellent':
+        feedQuality = 90;
+        break;
+      case 'Good':
+        feedQuality = 75;
+        break;
+      case 'Fair':
+        feedQuality = 55;
+        break;
+      case 'Poor':
+        feedQuality = 30;
+        break;
+      case 'Critical':
+        feedQuality = 15;
+        break;
+      default:
+        feedQuality = 50;
     }
 
     // Adjust based on bond score (higher bond = better care)

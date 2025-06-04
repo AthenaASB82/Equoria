@@ -129,9 +129,9 @@ export async function revealTraits(horseId, options = {}) {
         breed: true,
         foalActivities: options.checkEnrichment
           ? {
-            orderBy: { createdAt: 'desc' },
-            take: 20,
-          }
+              orderBy: { createdAt: 'desc' },
+              take: 20,
+            }
           : false,
       },
     });

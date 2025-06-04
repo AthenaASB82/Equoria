@@ -154,33 +154,33 @@ async function exampleAddTraitBasedOnEvent(horseId, eventType) {
 
     // Determine trait based on event
     switch (eventType) {
-    case 'successful_difficult_training':
-      traitToAdd = 'resilient';
-      category = 'positive';
-      console.log('Horse completed difficult training successfully!');
-      break;
+      case 'successful_difficult_training':
+        traitToAdd = 'resilient';
+        category = 'positive';
+        console.log('Horse completed difficult training successfully!');
+        break;
 
-    case 'traumatic_accident':
-      traitToAdd = 'nervous';
-      category = 'negative';
-      console.log('Horse experienced a traumatic accident.');
-      break;
+      case 'traumatic_accident':
+        traitToAdd = 'nervous';
+        category = 'negative';
+        console.log('Horse experienced a traumatic accident.');
+        break;
 
-    case 'major_competition_win':
-      traitToAdd = 'bold';
-      category = 'positive';
-      console.log('Horse won a major competition!');
-      break;
+      case 'major_competition_win':
+        traitToAdd = 'bold';
+        category = 'positive';
+        console.log('Horse won a major competition!');
+        break;
 
-    case 'repeated_spooking':
-      traitToAdd = 'spooky';
-      category = 'negative';
-      console.log('Horse has been spooking repeatedly.');
-      break;
+      case 'repeated_spooking':
+        traitToAdd = 'spooky';
+        category = 'negative';
+        console.log('Horse has been spooking repeatedly.');
+        break;
 
-    default:
-      console.log(`No trait changes for event: ${eventType}`);
-      return null;
+      default:
+        console.log(`No trait changes for event: ${eventType}`);
+        return null;
     }
 
     if (traitToAdd) {

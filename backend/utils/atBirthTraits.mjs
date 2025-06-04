@@ -320,20 +320,20 @@ async function assessFeedQuality(mareId) {
     let feedQuality = 50; // Base quality
 
     switch (mare.healthStatus) {
-    case 'Excellent':
-      feedQuality = 85;
-      break;
-    case 'Good':
-      feedQuality = 70;
-      break;
-    case 'Fair':
-      feedQuality = 55;
-      break;
-    case 'Poor':
-      feedQuality = 30;
-      break;
-    default:
-      feedQuality = 50;
+      case 'Excellent':
+        feedQuality = 85;
+        break;
+      case 'Good':
+        feedQuality = 70;
+        break;
+      case 'Fair':
+        feedQuality = 55;
+        break;
+      case 'Poor':
+        feedQuality = 30;
+        break;
+      default:
+        feedQuality = 50;
     }
 
     // Adjust based on earnings (higher earnings = better care)
@@ -490,43 +490,43 @@ async function applyEpigeneticTraitsAtBirth(breedingData) {
 function evaluateTraitConditions(traitConditions, actualConditions) {
   for (const [condition, requirement] of Object.entries(traitConditions)) {
     switch (condition) {
-    case 'mareStressMax':
-      if (actualConditions.mareStress > requirement) {
-        return false;
-      }
-      break;
-    case 'mareStressMin':
-      if (actualConditions.mareStress < requirement) {
-        return false;
-      }
-      break;
-    case 'feedQualityMin':
-      if (actualConditions.feedQuality < requirement) {
-        return false;
-      }
-      break;
-    case 'feedQualityMax':
-      if (actualConditions.feedQuality > requirement) {
-        return false;
-      }
-      break;
-    case 'disciplineSpecialization':
-      if (actualConditions.disciplineSpecialization !== requirement) {
-        return false;
-      }
-      break;
-    case 'inbreedingDetected':
-      if (actualConditions.inbreedingDetected !== requirement) {
-        return false;
-      }
-      break;
-    case 'noInbreeding':
-      if (actualConditions.noInbreeding !== requirement) {
-        return false;
-      }
-      break;
-    default:
-      logger.warn(`[atBirthTraits.evaluateTraitConditions] Unknown condition: ${condition}`);
+      case 'mareStressMax':
+        if (actualConditions.mareStress > requirement) {
+          return false;
+        }
+        break;
+      case 'mareStressMin':
+        if (actualConditions.mareStress < requirement) {
+          return false;
+        }
+        break;
+      case 'feedQualityMin':
+        if (actualConditions.feedQuality < requirement) {
+          return false;
+        }
+        break;
+      case 'feedQualityMax':
+        if (actualConditions.feedQuality > requirement) {
+          return false;
+        }
+        break;
+      case 'disciplineSpecialization':
+        if (actualConditions.disciplineSpecialization !== requirement) {
+          return false;
+        }
+        break;
+      case 'inbreedingDetected':
+        if (actualConditions.inbreedingDetected !== requirement) {
+          return false;
+        }
+        break;
+      case 'noInbreeding':
+        if (actualConditions.noInbreeding !== requirement) {
+          return false;
+        }
+        break;
+      default:
+        logger.warn(`[atBirthTraits.evaluateTraitConditions] Unknown condition: ${condition}`);
     }
   }
   return true;

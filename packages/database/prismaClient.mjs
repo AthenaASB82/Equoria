@@ -1,4 +1,4 @@
-// packages/database/prismaClient.js or backend/prismaClient.js
+// packages/database/prismaClient.mjs
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import path from 'path';
@@ -18,7 +18,7 @@ dotenv.config({
       : path.join(backendDir, '.env'),
 });
 
-let prisma;
+let prisma = null;
 
 if (process.env.NODE_ENV === 'production') {
   prisma = new PrismaClient();
@@ -35,25 +35,16 @@ if (process.env.NODE_ENV === 'production') {
 if (process.env.NODE_ENV === 'test' && process.env.JEST_WORKER_ID) {
   try {
     // Dynamic import to prevent circular dependency
-    // Corrected path to jest.setup.js in the backend folder
-    const jestSetupPath = path.resolve(
-      __dirname,
-      '../../backend/jest.setup.js'
-    );
+    // Corrected path to jest.setup.mjs in the backend folder
+    const jestSetupPath = path.resolve(__dirname, '../../backend/jest.setup.mjs');
     const jestSetupURL = pathToFileURL(jestSetupPath).href; // Convert to file URL
     const { registerPrismaForCleanup } = await import(jestSetupURL); // Use URL for import
     registerPrismaForCleanup(prisma);
     console.info('[PrismaClient] Jest cleanup registered successfully.');
   } catch (err) {
-    console.warn(
-      '[PrismaClient] Could not register for test cleanup:',
-      err.message
-    );
+    console.warn('[PrismaClient] Could not register for test cleanup:', err.message);
     // Log the path it tried to import for easier debugging if it still fails
-    const attemptedPath = path.resolve(
-      __dirname,
-      '../../backend/jest.setup.js'
-    );
+    const attemptedPath = path.resolve(__dirname, '../../backend/jest.setup.mjs');
     console.warn(`[PrismaClient] Attempted to import path: ${attemptedPath}`);
     if (
       err.message.includes('ERR_MODULE_NOT_FOUND') &&

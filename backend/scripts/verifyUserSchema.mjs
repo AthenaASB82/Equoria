@@ -88,7 +88,7 @@ async function verifyUserSchema() {
     logger.info('- ✅ xp (Integer, Default: 0) - Merged from Player');
     logger.info('- ✅ settings (JSONB, Default: {}) - Merged from Player');
     logger.info('- ✅ isActive (Boolean, Default: true)');
-    logger.info('- ✅ role (String, Default: \'user\')');
+    logger.info("- ✅ role (String, Default: 'user')");
     logger.info('- ✅ createdAt (DateTime, Default: CURRENT_TIMESTAMP)');
     logger.info('- ✅ updatedAt (DateTime, Auto-updated)');
     logger.info('- ✅ lastLoginAt (DateTime, Optional)\n');

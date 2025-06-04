@@ -26,7 +26,7 @@ import {
 } from '../utils/groomBondingSystem.mjs';
 import prisma from '../db/index.mjs';
 import logger from '../utils/logger.mjs';
-import { ensureDefaultGroomAssignment } from '../services/groomService';
+// import { ensureDefaultGroomAssignment } from '../services/groomService'; // TODO: Implement when needed
 
 /**
  * POST /api/grooms/assign
@@ -94,11 +94,10 @@ export async function assignGroom(req, res) {
 /**
  * POST /api/grooms/ensure-default/:foalId
  * Ensure a foal has a default groom assignment
+ */
 export async function ensureDefaultAssignment(req, res) {
-
   try {
     const { foalId } = req.params;
-    const userId = req.user?.id || 'default-user'; // TODO: Get from auth
     const userId = req.user?.id || 'default-user'; // TODO: Get from auth
 
     const parsedFoalId = parseInt(foalId, 10);
@@ -114,7 +113,8 @@ export async function ensureDefaultAssignment(req, res) {
       `[groomController.ensureDefaultAssignment] Ensuring default assignment for foal ${parsedFoalId}`,
     );
 
-    const result = await ensureDefaultGroomAssignment(parsedFoalId, userId);
+    // TODO: Implement ensureDefaultGroomAssignment service
+    const result = { success: false, message: 'Service not implemented yet' };
     if (!result.success) {
       return res.status(400).json({
         success: false,
