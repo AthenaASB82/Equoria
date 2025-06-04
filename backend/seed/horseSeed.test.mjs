@@ -58,7 +58,7 @@ describe('horseSeed', () => {
   });
 
   afterAll(async () => {
-    if (mockPrisma && mockPrisma.$disconnect) {
+    if (mockPrisma?.$disconnect) {
       await mockPrisma.$disconnect();
     }
   });

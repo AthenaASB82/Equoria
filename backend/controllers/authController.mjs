@@ -289,7 +289,7 @@ export const logout = async (req, res, next) => {
   try {
     // const { refreshToken: _unusedRefreshToken } = req.body; // Marked as unused if not needed for specific token invalidation
 
-    if (req.user && req.user.id) {
+    if (req.user?.id) {
       await prisma.refreshToken.deleteMany({
         where: { userId: req.user.id },
       });

@@ -124,7 +124,7 @@ async function updateHorseRewards(horseId, prizeAmount, statGain = null) {
     let updatedHorse = await updateHorseEarnings(horseId, prizeAmount);
 
     // Apply stat gain if applicable
-    if (statGain && statGain.stat && statGain.gain) {
+    if (statGain?.stat && statGain.gain) {
       updatedHorse = await updateHorseStat(horseId, statGain.stat, statGain.gain);
     }
 

@@ -291,7 +291,7 @@ describe('📊 INTEGRATION: XP Logging Integration - Experience Point Workflow',
       const placement = '1st';
       const xpAmount = 20;
 
-      if (mockHorse && mockHorse.userId) {
+      if (mockHorse?.userId) {
         // Changed from ownerId
         await mockAddXp(mockHorse.userId, xpAmount); // Changed from ownerId
         await mockLevelUpIfNeeded(mockHorse.userId); // Changed from ownerId

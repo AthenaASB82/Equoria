@@ -111,7 +111,7 @@ const TraitCompetitionAnalysis = ({
 
   // Handle discipline selection
   const handleDisciplineSelect = (discipline) => {
-    onDisciplineChange && onDisciplineChange(discipline);
+    onDisciplineChange?.(discipline);
     if (activeTab === 'analysis') {
       fetchAnalysis(discipline);
     }

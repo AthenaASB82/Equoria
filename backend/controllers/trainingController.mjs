@@ -278,7 +278,7 @@ async function trainHorse(horseId, discipline) {
 
     // Award XP to horse owner for training
     try {
-      if (updatedHorse && updatedHorse.userId) {
+      if (updatedHorse?.userId) {
         // Award XP using userModel.addXpToUser (leveling up is handled automatically)
         const xpResult = await addXpToUser(updatedHorse.userId, baseXp);
 

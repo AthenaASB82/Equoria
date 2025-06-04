@@ -224,7 +224,7 @@ describe('🔐 INTEGRATION: Authentication System - Complete Auth Workflow Valid
 
       const registerResponse = await request(app).post('/api/auth/register').send(userData);
 
-      if (registerResponse.body && registerResponse.body.data) {
+      if (registerResponse.body?.data) {
         refreshTokenValue = registerResponse.body.data.refreshToken;
       } else {
         // console.error("Auth-Test: Failed to get refreshTokenValue during setup:", registerResponse.status, registerResponse.body);
@@ -271,7 +271,7 @@ describe('🔐 INTEGRATION: Authentication System - Complete Auth Workflow Valid
 
       const registerResponse = await request(app).post('/api/auth/register').send(userData);
 
-      if (registerResponse.body && registerResponse.body.data) {
+      if (registerResponse.body?.data) {
         authTokenValue = registerResponse.body.data.token;
         testUserValue = registerResponse.body.data.user;
       } else {
