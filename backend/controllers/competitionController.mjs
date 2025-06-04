@@ -341,7 +341,7 @@ async function enterAndRunShow(horseIds, show) {
           try {
             // Get horse to find owner
             const horse = await getHorseById(simResult.horseId);
-            if (horse && horse.userId) {
+            if (horse?.userId) {
               let userXpAmount = 0;
               switch (simResult.placement) {
                 case '1st':

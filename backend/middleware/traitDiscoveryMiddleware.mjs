@@ -30,7 +30,7 @@ export function autoDiscoveryMiddleware(options = {}) {
       const result = originalJson.call(this, data);
 
       // Only trigger discovery on successful operations
-      if (data && data.success && res.statusCode >= 200 && res.statusCode < 300) {
+      if (data?.success && res.statusCode >= 200 && res.statusCode < 300) {
         // Extract horse ID from various possible sources
         const horseId = extractHorseId(req, data);
 
@@ -94,7 +94,7 @@ function extractHorseId(req, data) {
       horseId = parseInt(data.data.horseId, 10);
     } else if (data.data.foalId) {
       horseId = parseInt(data.data.foalId, 10);
-    } else if (data.data.foal && data.data.foal.id) {
+    } else if (data.data.foal?.id) {
       horseId = parseInt(data.data.foal.id, 10);
     }
   }

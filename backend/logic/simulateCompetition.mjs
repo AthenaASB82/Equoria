@@ -62,8 +62,8 @@ function simulateCompetition(horses, show) {
       const trainingScore = horse.trainingScore || 0;
 
       // 4. Add tack bonuses (saddle + bridle)
-      const saddleBonus = (horse.tack && horse.tack.saddleBonus) || 0;
-      const bridleBonus = (horse.tack && horse.tack.bridleBonus) || 0;
+      const saddleBonus = (horse.tack?.saddleBonus) || 0;
+      const bridleBonus = (horse.tack?.bridleBonus) || 0;
       const tackBonus = saddleBonus + bridleBonus;
 
       // 5. Calculate subtotal before percentage modifiers
@@ -71,8 +71,8 @@ function simulateCompetition(horses, show) {
         baseScore + legacyTraitBonus + disciplineAffinityBonus + trainingScore + tackBonus;
 
       // 6. Apply rider modifiers (bonus and penalty as percentages)
-      const riderBonusPercent = (horse.rider && horse.rider.bonusPercent) || 0;
-      const riderPenaltyPercent = (horse.rider && horse.rider.penaltyPercent) || 0;
+      const riderBonusPercent = (horse.rider?.bonusPercent) || 0;
+      const riderPenaltyPercent = (horse.rider?.penaltyPercent) || 0;
       const scoreAfterRider = applyRiderModifiers(subtotal, riderBonusPercent, riderPenaltyPercent);
 
       // 7. Apply health modifier (percentage adjustment)

@@ -177,7 +177,7 @@ function analyzeInbreeding(lineage) {
 
   // Count occurrences of each ancestor
   lineage.forEach(ancestor => {
-    if (ancestor && ancestor.id) {
+    if (ancestor?.id) {
       ancestorCounts[ancestor.id] = (ancestorCounts[ancestor.id] || 0) + 1;
       if (ancestorCounts[ancestor.id] > 1 && !commonAncestors.includes(ancestor.id)) {
         commonAncestors.push(ancestor.id);
@@ -221,18 +221,18 @@ function analyzeDisciplineSpecialization(lineage) {
   const disciplineCounts = {};
 
   lineage.forEach(ancestor => {
-    if (ancestor && ancestor.discipline) {
+    if (ancestor?.discipline) {
       disciplineCounts[ancestor.discipline] = (disciplineCounts[ancestor.discipline] || 0) + 1;
     }
 
     // Check mostCompetedDiscipline field (primary field for discipline specialization)
-    if (ancestor && ancestor.mostCompetedDiscipline) {
+    if (ancestor?.mostCompetedDiscipline) {
       disciplineCounts[ancestor.mostCompetedDiscipline] =
         (disciplineCounts[ancestor.mostCompetedDiscipline] || 0) + 1;
     }
 
     // Also check disciplineScores for highest scoring discipline
-    if (ancestor && ancestor.disciplineScores) {
+    if (ancestor?.disciplineScores) {
       const highestDiscipline = getHighestScoringDiscipline(ancestor.disciplineScores);
       if (highestDiscipline) {
         disciplineCounts[highestDiscipline] = (disciplineCounts[highestDiscipline] || 0) + 1;

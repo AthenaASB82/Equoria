@@ -273,12 +273,12 @@ export function calculateTraitCompetitionImpact(horse, discipline, baseScore) {
       let isSpecialized = false;
 
       // Check for discipline-specific effects first
-      if (traitEffects.disciplines && traitEffects.disciplines[discipline]) {
+      if (traitEffects.disciplines?.[discipline]) {
         traitModifier = traitEffects.disciplines[discipline].scoreModifier;
         effectDescription = traitEffects.disciplines[discipline].description;
         isSpecialized = true;
         result.details.disciplineSpecific += Math.abs(traitModifier);
-      } else if (traitEffects.general && traitEffects.general.scoreModifier) {
+      } else if (traitEffects.general?.scoreModifier) {
         // Use general competition score modifier
         traitModifier = traitEffects.general.scoreModifier;
         effectDescription = traitEffects.general.description;
@@ -391,5 +391,5 @@ export function getAllTraitCompetitionEffects() {
  */
 export function hasSpecializedEffect(traitName, discipline) {
   const traitEffect = TRAIT_COMPETITION_EFFECTS[traitName];
-  return !!(traitEffect && traitEffect.disciplines && traitEffect.disciplines[discipline]);
+  return !!(traitEffect?.disciplines && traitEffect.disciplines[discipline]);
 }
