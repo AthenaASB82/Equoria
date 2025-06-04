@@ -6,12 +6,9 @@
 /* eslint-disable no-console */
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { beforeAll, afterAll, jest } from '@jest/globals';
 
-// ES Module compatibility - using import.meta in a way Jest can handle
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// __dirname is available once transpiled to CommonJS
 
 dotenv.config({ path: path.resolve(__dirname, '.env.test') });
 

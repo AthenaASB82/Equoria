@@ -6,7 +6,8 @@ export default {
         targets: {
           node: 'current',
         },
-        modules: false,
+        // Convert ES modules to CommonJS for Jest
+        modules: 'commonjs',
       },
     ],
   ],
