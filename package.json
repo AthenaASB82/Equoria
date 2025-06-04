@@ -1,6 +1,7 @@
 {
   "name": "equoria-monorepo",
   "version": "1.0.0",
+  "type": "module",
   "description": "Root package for the Equoria project, enabling easier script execution for sub-projects.",
   "private": true,
     "scripts": {

@@ -9,11 +9,6 @@ export default {
   // Ensures Jest treats both JS and MJS files correctly
   moduleFileExtensions: ['js', 'mjs'],
 
-  // Configure transform for ES modules
-  transform: {
-    '^.+\\.m?js$': ['babel-jest', { configFile: './babel.config.json' }],
-  },
-
   // Don't transform node_modules except for specific packages that need it
   transformIgnorePatterns: ['node_modules/(?!(dotenv|other-es-module-packages)/)'],
 
