@@ -8,20 +8,6 @@ export default {
   // Ensures Jest treats both JS and MJS files correctly
   moduleFileExtensions: ['js', 'mjs'],
 
-  // Use native ES modules - no transform needed
-  preset: null,
-  transform: {},
-
-  // Don't transform node_modules
-  transformIgnorePatterns: ['node_modules/'],
-
-  // Add globals for ES modules
-  globals: {
-    'ts-jest': {
-      useESM: true,
-    },
-  },
-
   // Setup file path must match your actual filename
   setupFilesAfterEnv: ['<rootDir>/jest.setup.mjs'],
 
