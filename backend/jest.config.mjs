@@ -11,7 +11,7 @@ export default {
 
   // Configure transform for ES modules
   transform: {
-    '^.+\\.m?js$': ['babel-jest', { configFile: './babel.config.json' }],
+    '^.+\\.m?js$': ['babel-jest', { configFile: './babel.config.mjs' }],
   },
 
   // Don't transform node_modules except for specific packages that need it
